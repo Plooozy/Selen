@@ -1,7 +1,9 @@
 package ru.netology.FormTest;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.Configuration;
 import org.junit.jupiter.api.Test;
+
 import static com.codeborne.selenide.Selenide.$;
 import static com.codeborne.selenide.Selenide.open;
 
@@ -16,6 +18,7 @@ public class FormTest {
         $("[role=button]").click();
         $("[data-test-id=order-success]").shouldHave(Condition.exactText("  Ваша заявка успешно отправлена! Наш менеджер свяжется с вами в ближайшее время."));
     }
+
     @Test
     void shouldNotPassName() throws InterruptedException {
         Configuration.headless = true;
@@ -26,6 +29,7 @@ public class FormTest {
         $("[role=button]").click();
         $(".input_invalid .input__sub").shouldHave(Condition.exactText("Имя и Фамилия указаные неверно. Допустимы только русские буквы, пробелы и дефисы."));
     }
+
     @Test
     void shouldNotPassNoName() throws InterruptedException {
         Configuration.headless = true;
@@ -35,6 +39,7 @@ public class FormTest {
         $("[role=button]").click();
         $(".input_invalid .input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
+
     @Test
     void shouldNotPassPhone() throws InterruptedException {
         Configuration.headless = true;
@@ -45,6 +50,7 @@ public class FormTest {
         $("[role=button]").click();
         $(".input_invalid .input__sub").shouldHave(Condition.exactText("Телефон указан неверно. Должно быть 11 цифр, например, +79012345678."));
     }
+
     @Test
     void shouldNotPassNoPhone() throws InterruptedException {
         Configuration.headless = true;
@@ -54,6 +60,7 @@ public class FormTest {
         $("[role=button]").click();
         $(".input_invalid .input__sub").shouldHave(Condition.exactText("Поле обязательно для заполнения"));
     }
+
     @Test
     void shouldNotPassCheckbox() {
         Configuration.headless = true;
